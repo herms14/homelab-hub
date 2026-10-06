@@ -1,0 +1,19 @@
+.DS_Store
+
+# Local overrides (not committed)
+.claude/settings.local.json
+
+# Git-cloned repos in repos/ (each is its own git repo)
+# Managed by /pull-all-repos and /add-repository — one entry per git repo.
+# Local (non-git) source folders in repos/ are NOT ignored — they are tracked by the root repo.
+repos/homelab-infrastructure/
+repos/homelab-deployment/
+repos/helios-api/
+repos/glance-dashboard/
+repos/homelab-agent/
+repos/blog/
+
+# Never commit secrets
+.env
+*.tfvars
+!*.tfvars.example

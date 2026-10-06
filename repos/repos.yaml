@@ -1,0 +1,49 @@
+# repos.yaml — Workspace Manifest
+# Defines which repositories and local source folders belong to this workspace.
+# Run /pull-all-repos to clone/pull git repos and register local folders.
+#
+# Fields:
+#   name:        Directory name under repos/ (required)
+#   type:        "git" (default) or "local"
+#   url:         Git clone URL (required for type: git)
+#   branch:      Default branch to track (default: main, git only)
+#   gitignore:   For local folders only — true to gitignore, false/omitted to track (default)
+#   prefix:      Short prefix for the repo (optional, used in references)
+#   description: One-line summary (optional, auto-filled by /pull-all-repos)
+
+repos:
+  - name: homelab-infrastructure
+    url: https://github.com/herms14/homelab-infrastructure.git
+    branch: main
+    prefix: infra
+    description: Main homelab docs - current-state README, docs/, dashboards, Ansible/Terraform/Packer source
+
+  - name: homelab-deployment
+    url: https://github.com/herms14/Homelab-Infrastructure-Deployment.git
+    branch: main
+    prefix: deploy
+    description: Bare-metal rebuild guide - 13-step rebuild order, deploy playbooks, Terraform
+
+  - name: helios-api
+    url: https://github.com/herms14/helios-homelab-api.git
+    branch: main
+    prefix: helios
+    description: Helios control-plane REST API + CLI for Proxmox, Synology, Omada, Ansible and Terraform
+
+  - name: glance-dashboard
+    url: https://github.com/herms14/glance-dashboard.git
+    branch: main
+    prefix: glance
+    description: Glance dashboard config, theme and custom widget helper APIs
+
+  - name: homelab-agent
+    url: https://github.com/herms14/homelab-agent.git
+    branch: master
+    prefix: agent
+    description: Generic AI slash commands (Claude Code) for homelab documentation and ops
+
+  - name: blog
+    url: https://github.com/herms14/Clustered-Thoughts.git
+    branch: main
+    prefix: blog
+    description: Clustered Thoughts - Jekyll blog about building and running the homelab
