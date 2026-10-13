@@ -18,6 +18,7 @@ One workspace for everything about my homelab, **MorpheusCluster**. It pulls all
 | [`glance-dashboard`](https://github.com/herms14/glance-dashboard) | herms14/glance-dashboard | Glance dashboard config + custom widget APIs |
 | [`homelab-agent`](https://github.com/herms14/homelab-agent) | herms14/homelab-agent | Reusable AI slash commands for homelab docs |
 | [`blog`](https://github.com/herms14/Clustered-Thoughts) | herms14/Clustered-Thoughts | [Clustered Thoughts](https://herms14.github.io/Clustered-Thoughts/), the homelab blog |
+| [`olympus-agents`](https://github.com/herms14/olympus-agents) | herms14/olympus-agents | Roundtable AI agent team: portal, voice, personas (private) |
 
 Details per repo: [repos/repos.md](repos/repos.md).
 
