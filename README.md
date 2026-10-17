@@ -27,7 +27,7 @@ Details per repo: [repos/repos.md](repos/repos.md).
 | | |
 |---|---|
 | **Hypervisor** | Proxmox VE 9.2, 3 nodes + QDevice (64 threads, ~120 GB RAM) |
-| **Guests** | 5 VMs + 3 templates, 13 LXCs |
+| **Guests** | 5 VMs + 3 templates, 14 LXCs |
 | **Network** | TP-Link Omada SDN, 8 VLANs |
 | **Edge** | Traefik + Let's Encrypt, Authentik SSO, Pi-hole DNS |
 | **Storage / backup** | Synology DS920+ (NFS), Proxmox Backup Server |

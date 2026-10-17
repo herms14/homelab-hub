@@ -1,6 +1,6 @@
 # Inventory
 
-Snapshot of the live cluster, taken **2026-10-06** from node01 (`pvesh get /cluster/resources`).
+Snapshot of the live cluster, taken **2026-10-18** from node01 (`pvesh get /cluster/resources`).
 Run `/inventory-refresh` to check for drift.
 
 ## Cluster
@@ -23,7 +23,7 @@ Run `/inventory-refresh` to check for drift.
 | VMID | Name | Node | RAM | IP | Role |
 |------|------|------|-----|----|------|
 | 103 | ansible-controller01 | node01 | 8 GB | 192.168.20.30 | Ansible / Terraform / Packer controller |
-| 106 | gitlab-vm01 | node03 | 8 GB | 192.168.40.23 | GitLab CE |
+| 106 | gitlab-vm01 | node03 | 12 GB | 192.168.40.23 | GitLab CE |
 | 107 | docker-vm-core-utilities01 | node01 | 24 GB | 192.168.40.13 | Monitoring, productivity apps, Glance helper APIs |
 | 108 | immich-vm01 | node03 | 16 GB | 192.168.40.22 | Immich photos |
 | 121 | gitlab-runner-vm01 | node02 | 2 GB | 192.168.40.24 | GitLab CI runner |
@@ -31,7 +31,7 @@ Run `/inventory-refresh` to check for drift.
 | 9022 | WS2022-Template | node03 | - | - | Windows Server 2022 template |
 | 9025 | WS2025-Template | node03 | - | - | Windows Server 2025 template |
 
-## LXC Containers (13, 12 running)
+## LXC Containers (14, 14 running)
 
 | CTID | Name | Node | RAM | IP | Role |
 |------|------|------|-----|----|------|
@@ -45,9 +45,10 @@ Run `/inventory-refresh` to check for drift.
 | 206 | homeassistant-lxc | node01 | 4 GB | 192.168.40.25 | Home Assistant |
 | 207 | chronicle-lxc | node02 | 2 GB | 192.168.40.15 | Homelab Chronicle |
 | 208 | ghostfolio-lxc | node02 | 4 GB | 192.168.40.26 | Ghostfolio |
-| 209 | homepage-lxc | node01 | 1 GB | 192.168.40.27 | Homepage (**stopped**) |
+| 209 | homepage-lxc | node01 | 1 GB | 192.168.40.27 | Homepage |
 | 210 | helios-lxc | node01 | 2 GB | 192.168.40.14 | Helios API `:8000` / `:8001` / `:8002` |
-| 211 | codex-agent-lxc | node01 | 2 GB | 192.168.40.16 | Codex patch-management agent (`sre-agent.service`) |
+| 211 | codex-agent-lxc | node01 | 4 GB | 192.168.40.16 | Codex patch-management agent (`sre-agent.service`) |
+| 212 | study-lxc | node02 | 2 GB | 192.168.40.38 | _new - role to be described_ |
 
 ## Services on docker-vm-core-utilities01 (192.168.40.13)
 

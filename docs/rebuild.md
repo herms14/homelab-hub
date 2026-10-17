@@ -33,7 +33,7 @@ Detailed per-step instructions live in [`repos/homelab-deployment/README.md`](..
 
 ## Notes
 
-- **LXCs are not in Terraform.** All 13 were created by hand. Restore from PBS or recreate with `pct create`, then run the matching playbook.
+- **LXCs are not in Terraform.** All 14 were created by hand. Restore from PBS or recreate with `pct create`, then run the matching playbook.
 - **Packer:** both infra repos have the same Windows templates (2022, 2025, Windows 11). Build vars come from a local `*.pkrvars.hcl` that you never commit.
 - **Glance:** use `glance-dashboard`, not the older Glance playbooks in the infra repos.
 - **Secrets:** every repo uses `.env.example` / `*.tfvars.example`. Fill real values on the host only.
