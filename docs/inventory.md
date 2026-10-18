@@ -1,6 +1,6 @@
 # Inventory
 
-Snapshot of the live cluster, taken **2026-10-18** from node01 (`pvesh get /cluster/resources`).
+Snapshot of the live cluster, taken **2026-10-19** from node01 (`pvesh get /cluster/resources`).
 Run `/inventory-refresh` to check for drift.
 
 ## Cluster
@@ -33,7 +33,7 @@ Bare metal outside the cluster: **homelab-dns01** (mini PC, Ubuntu 26.04, 4 core
 | 9022 | WS2022-Template | node03 | - | - | Windows Server 2022 template |
 | 9025 | WS2025-Template | node03 | - | - | Windows Server 2025 template |
 
-## LXC Containers (14, 14 running)
+## LXC Containers (15, 15 running)
 
 | CTID | Name | Node | RAM | IP | Role |
 |------|------|------|-----|----|------|
