@@ -47,7 +47,7 @@ Run `/inventory-refresh` to check for drift.
 | 208 | ghostfolio-lxc | node02 | 4 GB | 192.168.40.26 | Ghostfolio |
 | 209 | homepage-lxc | node01 | 1 GB | 192.168.40.27 | Homepage |
 | 210 | helios-lxc | node01 | 2 GB | 192.168.40.14 | Helios API `:8000` / `:8001` / `:8002` |
-| 211 | codex-agent-lxc | node01 | 4 GB | 192.168.40.16 | Codex patch-management agent (`sre-agent.service`) |
+| 211 | codex-agent-lxc | node01 | 4 GB | 192.168.40.16 | Roundtable agents and portal (`boss`, `olympus-portal` :8088, `labfeed` :8790), Codex patch-management agent (`sre-agent.service`) |
 | 212 | study-lxc | node02 | 2 GB | 192.168.40.38 | _new - role to be described_ |
 
 ## Services on docker-vm-core-utilities01 (192.168.40.13)

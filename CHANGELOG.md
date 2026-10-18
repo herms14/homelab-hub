@@ -2,6 +2,13 @@
 
 All notable changes to the homelab-hub workspace. Upstream template changes are in [TEMPLATE_CHANGELOG.md](TEMPLATE_CHANGELOG.md).
 
+## [docs] - 2026-10-18
+
+### Changed
+- README.md: `olympus-agents` row describes the portal Overview, themes, live Hermes Lab Atlas and Lab Feed.
+- docs/architecture.md: Roundtable on codex-agent-lxc (CT211) in the lab diagram and repo map; `olympus-agents` deploy row; Glance pages and Lab Feed; Lab Atlas layout touchpoint.
+- docs/inventory.md: CT211 runs the Roundtable services as well as the patch agent.
+
 ## [docs-sync] - 2026-10-18
 
 ### Changed

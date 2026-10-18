@@ -17,7 +17,8 @@ flowchart TB
         apps["Apps<br/>media .40.11 / immich .40.22 / gitlab .40.23<br/>home assistant .40.25 / ghostfolio .40.26 / chronicle .40.15"]
         utils["docker-vm-core-utilities01 .40.13<br/>Prometheus, Grafana, Uptime Kuma, n8n,<br/>Paperless, Glance helper APIs"]
         glance["docker-lxc-glance .40.12<br/>Glance dashboard"]
-        ops["Control plane<br/>ansible-controller01 .20.30 / helios-lxc .40.14<br/>codex-agent-lxc .40.16 / gitlab-runner"]
+        rt["codex-agent-lxc .40.16<br/>Roundtable agents, portal, Lab Feed :8790"]
+        ops["Control plane<br/>ansible-controller01 .20.30 / helios-lxc .40.14<br/>gitlab-runner"]
         pbs["pbs-server .20.50"]
     end
 
@@ -26,6 +27,9 @@ flowchart TB
     edge --> apps
     edge --> glance
     glance -->|widgets| utils
+    glance -->|lab JSON| rt
+    edge --> rt
+    rt -->|approved changes| cluster
     ops -->|manage| cluster
     pbs --- nas
 ```
@@ -46,8 +50,9 @@ flowchart LR
     glance["glance-dashboard<br/>dashboard config + widget APIs"]
     agent["homelab-agent<br/>generic AI commands"]
     blog["blog<br/>Clustered Thoughts"]
+    olympus["olympus-agents<br/>Roundtable agents + portal (private)"]
 
-    hub --> infra & deploy & helios & glance & agent & blog
+    hub --> infra & deploy & helios & glance & agent & blog & olympus
     infra -.-|"shared root commit ac0df66"| deploy
     deploy -->|"rebuild steps 11-12"| glance & helios
     infra -->|"links to"| helios & glance
@@ -60,6 +65,8 @@ flowchart LR
     infra ==>|"Ansible / Terraform"| lab[(MorpheusCluster)]
     deploy ==>|"Ansible / Terraform"| lab
     blog ==>|"GitHub Pages"| site[(herms14.github.io)]
+    olympus ==>|"deployed to"| ct211[(codex-agent-lxc CT211)]
+    glance -->|"reads Lab Feed"| olympus
 ```
 
 | Repo | Deploys to | How it ships |
@@ -70,6 +77,7 @@ flowchart LR
 | `glance-dashboard` | CT200 (Glance) + VM 107 (helper APIs) | Docker Compose, `.env` for secrets |
 | `homelab-agent` | Owner's Obsidian vault / any Claude Code project | Copy `commands/` into `.claude/commands/` |
 | `blog` | GitHub Pages | Push to `main` triggers `pages-deploy.yml` |
+| `olympus-agents` | codex-agent-lxc (CT211) | Files copied to `~/olympus`, systemd services and timers (`install.sh`) |
 
 ## Cross-Repo Touchpoints
 
@@ -79,7 +87,8 @@ Places where one change often needs a matching change elsewhere.
 |-------|---------------|---------------|
 | Inventory (hosts, IPs, CTIDs) | `infra/README.md`, `deploy/README.md`, `deploy/docs/INVENTORY.md`, [inventory.md](inventory.md) | Update all four together. |
 | Glance helper APIs | `glance-dashboard/apis/` **and** `ansible/playbooks/glance/` in both infra repos | Two copies of some APIs (for example `nas-backup-status`). `glance-dashboard` is current. |
-| Glance config | `glance-dashboard/config/glance.yml` | Older copies inside the infra repos' Ansible playbooks are stale. |
+| Glance config | `glance-dashboard/config/glance.yml` + `config/pages/` | Older copies inside the infra repos' Ansible playbooks are stale. Lab health widgets read Lab Feed (`olympus-agents/labfeed.py`). |
+| Lab diagrams | `olympus-agents/atlas_layout.json` | The Hermes Lab Atlas (`https://roundtable.hrmsmrflrii.xyz/atlas`) is redrawn from the live lab by the Roundtable scribe; move or relabel things in the layout file. |
 | Helios | `helios-api/` | Infra repos describe it but don't hold its code. |
 | Retired tech (K8s, Azure, OPNsense) | Both infra repos | Kept as archived reference. Don't revive. |
 | Terraform | `deploy/terraform/proxmox/main.tf` | Still defines retired K8s and syslog VMs. LXCs aren't in Terraform. |
