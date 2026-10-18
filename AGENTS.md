@@ -24,11 +24,11 @@ Your job: see every homelab repo at once, keep code and docs in line with the li
 | Cluster | MorpheusCluster: Proxmox VE 9.2.x, node01-03 + QDevice |
 | Guests | 5 VMs + 3 templates, 13 LXCs (see [docs/inventory.md](docs/inventory.md)) |
 | Network | TP-Link Omada SDN, VLANs 10/20/30/40/50/60/90 |
-| Edge | Traefik + Let's Encrypt wildcard, Authentik SSO, Pi-hole split DNS |
+| Edge | Traefik + Let's Encrypt wildcard, Authentik SSO, DNS: Technitium on homelab-dns01 (primary) + Pi-hole (secondary), Tailscale split DNS to both |
 | Domain | `https://<service>.hrmsmrflrii.xyz` |
 | Storage / backup | Synology DS920+ NFS, Proxmox Backup Server (CT100) |
 | Automation | Ansible, Terraform, Packer, GitLab CI, Helios API, Codex patch agent |
-| Retired | Kubernetes (2026-05-23), Azure hybrid lab (2026-05-25), KratosPC Hyper-V, OPNsense |
+| Retired | Kubernetes (2026-05-23), Azure hybrid lab (2026-05-25), KratosPC Hyper-V, OPNsense (its mini PC is now homelab-dns01) |
 
 Start with [docs/architecture.md](docs/architecture.md). It shows how the repos map to the lab.
 

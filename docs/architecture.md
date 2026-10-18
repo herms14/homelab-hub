@@ -13,7 +13,7 @@ flowchart TB
     core --> cluster
 
     subgraph cluster["MorpheusCluster - Proxmox VE 9.2 (node01-03 + QDevice)"]
-        edge["Edge<br/>traefik-lxc .40.20 / authentik-lxc .40.21 / pihole .90.53"]
+        edge["Edge<br/>traefik-lxc .40.20 / authentik-lxc .40.21 / pihole .90.53 (secondary DNS)"]
         apps["Apps<br/>media .40.11 / immich .40.22 / gitlab .40.23<br/>home assistant .40.25 / ghostfolio .40.26 / chronicle .40.15"]
         utils["docker-vm-core-utilities01 .40.13<br/>Prometheus, Grafana, Uptime Kuma, n8n,<br/>Paperless, Glance helper APIs"]
         glance["docker-lxc-glance .40.12<br/>Glance dashboard"]
@@ -23,6 +23,8 @@ flowchart TB
     end
 
     nas[("Synology DS920+<br/>NFS .20.32")] --- cluster
+    dns01["homelab-dns01 .90.60<br/>Technitium primary DNS (bare metal)"] --- core
+    dns01 -->|"local names synced daily"| edge
     users([Users / Tailscale]) -->|"https://&lt;svc&gt;.hrmsmrflrii.xyz"| edge
     edge --> apps
     edge --> glance
@@ -34,7 +36,7 @@ flowchart TB
     pbs --- nas
 ```
 
-Request path: Pi-hole resolves `<svc>.hrmsmrflrii.xyz` to Traefik. Traefik terminates TLS (Let's Encrypt wildcard via Cloudflare DNS-01). Authentik ForwardAuth enforces SSO where set. Traefik routes to the backend guest.
+Request path: Technitium (homelab-dns01, primary; Pi-hole is the secondary) resolves `<svc>.hrmsmrflrii.xyz` to Traefik. Traefik terminates TLS (Let's Encrypt wildcard via Cloudflare DNS-01). Authentik ForwardAuth enforces SSO where set. Traefik routes to the backend guest.
 
 ## Repos and What They Own
 
@@ -88,6 +90,7 @@ Places where one change often needs a matching change elsewhere.
 | Inventory (hosts, IPs, CTIDs) | `infra/README.md`, `deploy/README.md`, `deploy/docs/INVENTORY.md`, [inventory.md](inventory.md) | Update all four together. |
 | Glance helper APIs | `glance-dashboard/apis/` **and** `ansible/playbooks/glance/` in both infra repos | Two copies of some APIs (for example `nas-backup-status`). `glance-dashboard` is current. |
 | Glance config | `glance-dashboard/config/glance.yml` + `config/pages/` | Older copies inside the infra repos' Ansible playbooks are stale. Lab health widgets read Lab Feed (`olympus-agents/labfeed.py`). |
+| DNS records | Technitium on homelab-dns01 (`olympus-agents/dns/technitium_setup.py`) | Add local names in Technitium; Torrent's `dnssync.py` copies them to Pi-hole daily. |
 | Lab diagrams | `olympus-agents/atlas_layout.json` | The Hermes Lab Atlas (`https://roundtable.hrmsmrflrii.xyz/atlas`) is redrawn from the live lab by the Roundtable scribe; move or relabel things in the layout file. |
 | Helios | `helios-api/` | Infra repos describe it but don't hold its code. |
 | Retired tech (K8s, Azure, OPNsense) | Both infra repos | Kept as archived reference. Don't revive. |

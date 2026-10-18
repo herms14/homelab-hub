@@ -23,7 +23,7 @@ Detailed per-step instructions live in [`repos/homelab-deployment/README.md`](..
 | 5 | Templates (Ubuntu cloud-init, Packer Windows) | `homelab-deployment` | `packer/`, `docs/PACKER.md` |
 | 6 | VMs via Terraform | `homelab-deployment` | `terraform/proxmox/` (prune retired K8s/syslog VMs first) |
 | 7 | Ansible bootstrap + Docker | `homelab-deployment` | `docs/ANSIBLE.md`, `ansible/roles/docker/` |
-| 8 | Core: Pi-hole, Traefik, Authentik | `homelab-deployment` | `ansible/roles/traefik/`, `ansible/roles/authentik/`, `docs/FORWARD_AUTH_SETUP.md` |
+| 8 | Core: Technitium (homelab-dns01, `olympus-agents/dns/`), Pi-hole, Traefik, Authentik | `homelab-deployment` | `ansible/roles/traefik/`, `ansible/roles/authentik/`, `docs/FORWARD_AUTH_SETUP.md` |
 | 9 | Apps: media, Immich, GitLab, Paperless, n8n, Home Assistant, etc. | `homelab-deployment` | `ansible/playbooks/`, `docs/SERVICES.md` |
 | 10 | Monitoring: Prometheus, Grafana, Uptime Kuma, exporters | `homelab-infrastructure` | `ansible/playbooks/monitoring/`, `dashboards/` |
 | 11 | Glance + widget APIs | `glance-dashboard` | `README.md#deploy`, `config/.env.example`, `apis/` |
@@ -44,7 +44,7 @@ Detailed per-step instructions live in [`repos/homelab-deployment/README.md`](..
 |-------|---------------|
 | Cluster quorate | `pvecm status` |
 | Guests up | `pvesh get /cluster/resources --type vm` |
-| DNS | `nslookup glance.hrmsmrflrii.xyz 192.168.90.53` |
+| DNS | `nslookup glance.hrmsmrflrii.xyz 192.168.90.60` and `... 192.168.90.53` (both must answer 192.168.40.20) |
 | Edge + SSO | `https://auth.hrmsmrflrii.xyz`, `https://traefik.hrmsmrflrii.xyz` |
 | Dashboards | `https://glance.hrmsmrflrii.xyz`, `https://grafana.hrmsmrflrii.xyz` |
 | Helios | `curl http://192.168.40.14:8000/health` |

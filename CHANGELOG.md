@@ -2,6 +2,14 @@
 
 All notable changes to the homelab-hub workspace. Upstream template changes are in [TEMPLATE_CHANGELOG.md](TEMPLATE_CHANGELOG.md).
 
+## [docs-dns] - 2026-10-18
+
+### Changed
+- README.md, AGENTS.md: Technitium on homelab-dns01 is the primary DNS, Pi-hole the secondary; `olympus-agents` row lists DNS checks, dependency map, IP map and the Technitium setup.
+- docs/architecture.md: homelab-dns01 in the lab diagram, request path, DNS records touchpoint.
+- docs/inventory.md: homelab-dns01 (bare metal), Pi-hole secondary, Uptime Kuma DNS checks, VLAN 90.
+- docs/rebuild.md: Technitium in the core rebuild step; DNS check against both servers.
+
 ## [docs] - 2026-10-18
 
 ### Changed

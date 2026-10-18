@@ -18,7 +18,7 @@ One workspace for everything about my homelab, **MorpheusCluster**. It pulls all
 | [`glance-dashboard`](https://github.com/herms14/glance-dashboard) | herms14/glance-dashboard | Glance dashboard config + custom widget APIs |
 | [`homelab-agent`](https://github.com/herms14/homelab-agent) | herms14/homelab-agent | Reusable AI slash commands for homelab docs |
 | [`blog`](https://github.com/herms14/Clustered-Thoughts) | herms14/Clustered-Thoughts | [Clustered Thoughts](https://herms14.github.io/Clustered-Thoughts/), the homelab blog |
-| [`olympus-agents`](https://github.com/herms14/olympus-agents) | herms14/olympus-agents | Roundtable AI agent team on CT211: portal (Overview, themes, live Hermes Lab Atlas), voice, Lab Feed for Glance, personas (private) |
+| [`olympus-agents`](https://github.com/herms14/olympus-agents) | herms14/olympus-agents | Roundtable AI agent team on CT211: portal (Overview with DNS checks, themes, live Hermes Lab Atlas, dependency map, IP map), voice, Lab Feed for Glance, Technitium DNS setup, personas (private) |
 
 Details per repo: [repos/repos.md](repos/repos.md).
 
@@ -29,7 +29,7 @@ Details per repo: [repos/repos.md](repos/repos.md).
 | **Hypervisor** | Proxmox VE 9.2, 3 nodes + QDevice (64 threads, ~120 GB RAM) |
 | **Guests** | 5 VMs + 3 templates, 14 LXCs |
 | **Network** | TP-Link Omada SDN, 8 VLANs |
-| **Edge** | Traefik + Let's Encrypt, Authentik SSO, Pi-hole DNS |
+| **Edge** | Traefik + Let's Encrypt, Authentik SSO, Technitium DNS (primary) + Pi-hole (secondary) |
 | **Storage / backup** | Synology DS920+ (NFS), Proxmox Backup Server |
 | **Automation** | Ansible, Terraform, Packer, GitLab CI, Helios, an approval-gated AI patch agent |
 | **Apps** | Jellyfin + Arr stack, Immich, GitLab, Home Assistant, Paperless, n8n, Grafana, Glance, more |
