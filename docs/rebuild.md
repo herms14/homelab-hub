@@ -29,6 +29,7 @@ Detailed per-step instructions live in [`repos/homelab-deployment/README.md`](..
 | 11 | Glance + widget APIs | `glance-dashboard` | `README.md#deploy`, `config/.env.example`, `apis/` |
 | 12 | Helios API (CT210) | `helios-api` | `README.md#deployment` (Option A), `deploy/systemd/` |
 | 13 | Codex patch agent (CT211) | not published | `homelab-deployment` README, "Autonomous Patch Management Pipeline" |
+| 13b | OpenBao (CT213), before the Roundtable agents | `olympus-agents` | `openbao/bao_install.sh`, then `bao_setup.py` on CT211 (needs the unseal key from your password manager when restoring) |
 | 14 | Docs and story | `homelab-infrastructure`, `blog` | Update inventory, then `/inventory-refresh` here |
 
 ## Notes

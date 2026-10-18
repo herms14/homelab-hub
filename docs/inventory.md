@@ -50,7 +50,8 @@ Bare metal outside the cluster: **homelab-dns01** (mini PC, Ubuntu 26.04, 4 core
 | 209 | homepage-lxc | node01 | 1 GB | 192.168.40.27 | Homepage |
 | 210 | helios-lxc | node01 | 2 GB | 192.168.40.14 | Helios API `:8000` / `:8001` / `:8002` |
 | 211 | codex-agent-lxc | node01 | 4 GB | 192.168.40.16 | Roundtable agents and portal (`boss`, `olympus-portal` :8088, `labfeed` :8790), Codex patch-management agent (`sre-agent.service`) |
-| 212 | study-lxc | node02 | 2 GB | 192.168.40.38 | _new - role to be described_ |
+| 212 | study-lxc | node02 | 2 GB | 192.168.40.38 | Study notebook (https://study.hrmsmrflrii.xyz) |
+| 213 | openbao-lxc | node02 | 1 GB | 192.168.40.39 | OpenBao secrets store (:8200 TLS, https://bao.hrmsmrflrii.xyz LAN-only); auto-unseal from a no-backup mount |
 
 ## Services on docker-vm-core-utilities01 (192.168.40.13)
 

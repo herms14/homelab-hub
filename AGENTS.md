@@ -25,6 +25,7 @@ Your job: see every homelab repo at once, keep code and docs in line with the li
 | Guests | 5 VMs + 3 templates, 13 LXCs (see [docs/inventory.md](docs/inventory.md)) |
 | Network | TP-Link Omada SDN, VLANs 10/20/30/40/50/60/90 |
 | Edge | Traefik + Let's Encrypt wildcard, Authentik SSO, DNS: Technitium on homelab-dns01 (primary) + Pi-hole (secondary), Tailscale split DNS to both |
+| Secrets | OpenBao on openbao-lxc (CT213, .40.39): the Roundtable reads its secrets through a broker with one token per script; never put values in a repo |
 | Domain | `https://<service>.hrmsmrflrii.xyz` |
 | Storage / backup | Synology DS920+ NFS, Proxmox Backup Server (CT100) |
 | Automation | Ansible, Terraform, Packer, GitLab CI, Helios API, Codex patch agent |

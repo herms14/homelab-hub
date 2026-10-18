@@ -2,6 +2,14 @@
 
 All notable changes to the homelab-hub workspace. Upstream template changes are in [TEMPLATE_CHANGELOG.md](TEMPLATE_CHANGELOG.md).
 
+## [docs-secrets] - 2026-10-18
+
+### Changed
+- README.md, AGENTS.md: OpenBao secrets store and the Varys keeper agent; 15 LXCs.
+- docs/architecture.md: openbao-lxc in the lab diagram; Secrets touchpoint.
+- docs/inventory.md: CT213 openbao-lxc; CT212 role described.
+- docs/rebuild.md: OpenBao restore step before the Roundtable agents.
+
 ## [docs-dns] - 2026-10-18
 
 ### Changed

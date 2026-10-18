@@ -18,6 +18,7 @@ flowchart TB
         utils["docker-vm-core-utilities01 .40.13<br/>Prometheus, Grafana, Uptime Kuma, n8n,<br/>Paperless, Glance helper APIs"]
         glance["docker-lxc-glance .40.12<br/>Glance dashboard"]
         rt["codex-agent-lxc .40.16<br/>Roundtable agents, portal, Lab Feed :8790"]
+        bao["openbao-lxc .40.39<br/>OpenBao secrets store (Varys)"]
         ops["Control plane<br/>ansible-controller01 .20.30 / helios-lxc .40.14<br/>gitlab-runner"]
         pbs["pbs-server .20.50"]
     end
@@ -91,6 +92,7 @@ Places where one change often needs a matching change elsewhere.
 | Glance helper APIs | `glance-dashboard/apis/` **and** `ansible/playbooks/glance/` in both infra repos | Two copies of some APIs (for example `nas-backup-status`). `glance-dashboard` is current. |
 | Glance config | `glance-dashboard/config/glance.yml` + `config/pages/` | Older copies inside the infra repos' Ansible playbooks are stale. Lab health widgets read Lab Feed (`olympus-agents/labfeed.py`). |
 | DNS records | Technitium on homelab-dns01 (`olympus-agents/dns/technitium_setup.py`) | Add local names in Technitium; Torrent's `dnssync.py` copies them to Pi-hole daily. |
+| Secrets | OpenBao on openbao-lxc (`olympus-agents/openbao/`, scopes in `secret_scopes.json`) | Key names only in repos. New keys: add to a scope, run `bao_setup.py`; Varys (`keeper.py`) grants extra scopes only after owner approval. |
 | Lab diagrams | `olympus-agents/atlas_layout.json` | The Hermes Lab Atlas (`https://roundtable.hrmsmrflrii.xyz/atlas`) is redrawn from the live lab by the Roundtable scribe; move or relabel things in the layout file. |
 | Helios | `helios-api/` | Infra repos describe it but don't hold its code. |
 | Retired tech (K8s, Azure, OPNsense) | Both infra repos | Kept as archived reference. Don't revive. |
