@@ -2,7 +2,7 @@
 
 > **Based on [raffertyuy/repo-of-repos](https://github.com/raffertyuy/repo-of-repos).** This is a homelab-specific implementation of that template. Run `/sync-template` now and then to pick up improvements.
 
-One workspace for everything about my homelab, **MorpheusCluster**. It pulls all six homelab repos into `repos/` so an AI agent (or I) can see and change them together. Each repo still keeps its own git history and pushes to its own GitHub remote.
+One workspace for everything about my homelab, **MorpheusCluster**. It pulls all nine homelab repos into `repos/` so an AI agent (or I) can see and change them together. Each repo still keeps its own git history and pushes to its own GitHub remote.
 
 **Meet Morpheus**, the agent that runs this workspace. It reads across every repo, checks claims against the live cluster, and delegates single-repo changes to scoped workers.
 
@@ -18,7 +18,11 @@ One workspace for everything about my homelab, **MorpheusCluster**. It pulls all
 | [`glance-dashboard`](https://github.com/herms14/glance-dashboard) | herms14/glance-dashboard | Glance dashboard config + custom widget APIs |
 | [`homelab-agent`](https://github.com/herms14/homelab-agent) | herms14/homelab-agent | Reusable AI slash commands for homelab docs |
 | [`blog`](https://github.com/herms14/Clustered-Thoughts) | herms14/Clustered-Thoughts | [Clustered Thoughts](https://herms14.github.io/Clustered-Thoughts/), the homelab blog |
-| [`olympus-agents`](https://github.com/herms14/olympus-agents) | herms14/olympus-agents | Roundtable AI agent team on CT211: portal (Overview with DNS checks, themes, live Hermes Lab Atlas, dependency map, IP map), voice, Lab Feed for Glance, Technitium DNS setup, personas (private) |
+| [`roundtable`](https://github.com/herms14/roundtable) | herms14/roundtable | Roundtable homelab AI agent team on CT211: portal (Overview with DNS checks, themes, live Hermes Lab Atlas, dependency map, IP map), voice, Lab Feed for Glance, Technitium DNS and OpenBao setup. Homelab agents only |
+| [`homelab-docs`](https://github.com/herms14/homelab-docs) | herms14/homelab-docs | Public, redacted copy of the homelab notes from my Obsidian vault: index, tutorials, changelog, RFCs, the Book |
+| [`vlan-flow`](https://github.com/herms14/vlan-flow) | herms14/vlan-flow | VLAN Flow: live map of allowed and blocked traffic between VLANs, from firewall syslog |
+
+`homelab-infrastructure` and `helios-api` are private; without access, `pull_all.py` prints an error for them and clones the rest. The Roundtable runs in production from a private repo that also holds personal assistants; `roundtable` is the public, homelab-only edition.
 
 Details per repo: [repos/repos.md](repos/repos.md).
 
@@ -50,7 +54,7 @@ Details per repo: [repos/repos.md](repos/repos.md).
 ```bash
 git clone https://github.com/herms14/homelab-hub.git
 cd homelab-hub
-python scripts/pull_all.py        # clones all six repos into repos/
+python scripts/pull_all.py        # clones all nine repos into repos/
 ```
 
 Then open the folder in VS Code, Claude Code, Copilot CLI or Codex. With an agent, run `/pull-all-repos` instead; it also refreshes `repos/repos.md`.
@@ -104,7 +108,10 @@ See [_plans/README.md](_plans/README.md) for the plan format.
     ├── helios-api/                    # git origin = herms14/helios-homelab-api
     ├── glance-dashboard/              # git origin = herms14/glance-dashboard
     ├── homelab-agent/                 # git origin = herms14/homelab-agent
-    └── blog/                          # git origin = herms14/Clustered-Thoughts
+    ├── blog/                          # git origin = herms14/Clustered-Thoughts
+    ├── roundtable/                    # git origin = herms14/roundtable
+    ├── homelab-docs/                  # git origin = herms14/homelab-docs
+    └── vlan-flow/                     # git origin = herms14/vlan-flow
 ```
 
 Everything under `repos/<name>/` is gitignored here. This repo only tracks the workspace: instructions, skills, plans and docs.

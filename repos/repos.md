@@ -55,3 +55,30 @@ This file describes each repository and local source folder in `repos/`. Auto-ge
 - **Description**: Clustered Thoughts, the homelab blog. Posts come from the owner's Obsidian vault via `scripts/sync_obsidian.py` (only notes with `publish: true`). Site: https://herms14.github.io/Clustered-Thoughts/
 - **Key paths**: `_posts/`, `_pages/`, `_data/`, `assets/`, `scripts/`, `.github/workflows/`
 - **Agent instructions**: None
+
+## roundtable
+
+- **Type**: git
+- **Remote**: https://github.com/herms14/roundtable.git
+- **Tech stack**: Python 3, systemd services and timers, HTML/JS portal and 3D office, Electron desktop companion
+- **Description**: The Roundtable homelab agent team (Gideon and the four leads with their teams) and the portal on codex-agent-lxc (CT211). Public, homelab-only edition of the private production repo; personal and specialized assistants are not included. Secrets come from OpenBao or host env files; Discord ids are host config.
+- **Key paths**: `portal.py`, `olympus_core.py`, `<agent>.py`, `agents.json`, `dns/`, `openbao/`, `atlas_layout.json`, `install.sh`, `tests/`
+- **Agent instructions**: None (see `README.md`)
+
+## homelab-docs
+
+- **Type**: git
+- **Remote**: https://github.com/herms14/homelab-docs.git
+- **Tech stack**: Markdown (exported from Obsidian, wikilinks converted to relative links)
+- **Description**: Public, redacted copy of the "Claude Managed Homelab" notes from the owner's vault. Secrets, ids and personal-assistant material removed. The vault stays the source of truth; refresh this copy by re-running the redaction, never by hand-copying notes.
+- **Key paths**: `00 - Homelab Index.md`, numbered notes, `Book - The Complete Homelab Guide.md`, `Homelab Changelog.md`, `RFCs/`
+- **Agent instructions**: None
+
+## vlan-flow
+
+- **Type**: git
+- **Remote**: https://github.com/herms14/vlan-flow.git
+- **Tech stack**: Python 3.9+ (standard library only), static HTML/JS map, optional Docker
+- **Description**: VLAN Flow: receives firewall syslog and draws allowed and denied paths between VLANs. Generic; lab specifics live in `config.json` (not committed). Runs on docker-vm-core-utilities01 as `vlan-flow.service` (:8787).
+- **Key paths**: `server.py`, `app.js`, `dashboard.html`, `config.example.json`, `deploy/`, `docs/`
+- **Agent instructions**: None

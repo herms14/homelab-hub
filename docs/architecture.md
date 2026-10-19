@@ -53,9 +53,12 @@ flowchart LR
     glance["glance-dashboard<br/>dashboard config + widget APIs"]
     agent["homelab-agent<br/>generic AI commands"]
     blog["blog<br/>Clustered Thoughts"]
-    olympus["olympus-agents<br/>Roundtable agents + portal (private)"]
+    olympus["roundtable<br/>Roundtable agents + portal"]
+    docs["homelab-docs<br/>redacted vault notes"]
+    vlan["vlan-flow<br/>VLAN traffic-flow diagram"]
 
-    hub --> infra & deploy & helios & glance & agent & blog & olympus
+    hub --> infra & deploy & helios & glance & agent & blog & olympus & docs & vlan
+    docs -.-|"documents"| lab
     infra -.-|"shared root commit ac0df66"| deploy
     deploy -->|"rebuild steps 11-12"| glance & helios
     infra -->|"links to"| helios & glance
@@ -80,7 +83,9 @@ flowchart LR
 | `glance-dashboard` | CT200 (Glance) + VM 107 (helper APIs) | Docker Compose, `.env` for secrets |
 | `homelab-agent` | Owner's Obsidian vault / any Claude Code project | Copy `commands/` into `.claude/commands/` |
 | `blog` | GitHub Pages | Push to `main` triggers `pages-deploy.yml` |
-| `olympus-agents` | codex-agent-lxc (CT211) | Files copied to `~/olympus`, systemd services and timers (`install.sh`) |
+| `homelab-docs` | Nowhere (read on GitHub) | Redacted copy of the vault homelab notes, refreshed by hand |
+| `vlan-flow` | docker-vm-core-utilities01 (:8787) | Native Python `vlan-flow.service` (Docker also supported) |
+| `roundtable` | codex-agent-lxc (CT211) | Public homelab edition of the private `olympus-agents` deployment repo. Files copied to `~/olympus`, systemd services and timers (`install.sh`) |
 
 ## Cross-Repo Touchpoints
 
@@ -90,10 +95,10 @@ Places where one change often needs a matching change elsewhere.
 |-------|---------------|---------------|
 | Inventory (hosts, IPs, CTIDs) | `infra/README.md`, `deploy/README.md`, `deploy/docs/INVENTORY.md`, [inventory.md](inventory.md) | Update all four together. |
 | Glance helper APIs | `glance-dashboard/apis/` **and** `ansible/playbooks/glance/` in both infra repos | Two copies of some APIs (for example `nas-backup-status`). `glance-dashboard` is current. |
-| Glance config | `glance-dashboard/config/glance.yml` + `config/pages/` | Older copies inside the infra repos' Ansible playbooks are stale. Lab health widgets read Lab Feed (`olympus-agents/labfeed.py`). |
-| DNS records | Technitium on homelab-dns01 (`olympus-agents/dns/technitium_setup.py`) | Add local names in Technitium; Torrent's `dnssync.py` copies them to Pi-hole daily. |
-| Secrets | OpenBao on openbao-lxc (`olympus-agents/openbao/`, scopes in `secret_scopes.json`) | Key names only in repos. New keys: add to a scope, run `bao_setup.py`; Varys (`keeper.py`) grants extra scopes only after owner approval. |
-| Lab diagrams | `olympus-agents/atlas_layout.json` | The Hermes Lab Atlas (`https://roundtable.hrmsmrflrii.xyz/atlas`) is redrawn from the live lab by the Roundtable scribe; move or relabel things in the layout file. |
+| Glance config | `glance-dashboard/config/glance.yml` + `config/pages/` | Older copies inside the infra repos' Ansible playbooks are stale. Lab health widgets read Lab Feed (`roundtable/labfeed.py`). |
+| DNS records | Technitium on homelab-dns01 (`roundtable/dns/technitium_setup.py`) | Add local names in Technitium; Torrent's `dnssync.py` copies them to Pi-hole daily. |
+| Secrets | OpenBao on openbao-lxc (`roundtable/openbao/`, scopes in `secret_scopes.json`) | Key names only in repos. New keys: add to a scope, run `bao_setup.py`; Varys (`keeper.py`) grants extra scopes only after owner approval. |
+| Lab diagrams | `roundtable/atlas_layout.json` | The Hermes Lab Atlas (`https://roundtable.hrmsmrflrii.xyz/atlas`) is redrawn from the live lab by the Roundtable scribe; move or relabel things in the layout file. |
 | Helios | `helios-api/` | Infra repos describe it but don't hold its code. |
 | Retired tech (K8s, Azure, OPNsense) | Both infra repos | Kept as archived reference. Don't revive. |
 | Terraform | `deploy/terraform/proxmox/main.tf` | Still defines retired K8s and syslog VMs. LXCs aren't in Terraform. |

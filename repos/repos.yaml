@@ -47,3 +47,21 @@ repos:
     branch: main
     prefix: blog
     description: Clustered Thoughts - Jekyll blog about building and running the homelab
+
+  - name: roundtable
+    url: https://github.com/herms14/roundtable.git
+    branch: main
+    prefix: rt
+    description: Roundtable homelab AI agent team and portal on CT211 (public, homelab agents only)
+
+  - name: homelab-docs
+    url: https://github.com/herms14/homelab-docs.git
+    branch: main
+    prefix: docs
+    description: Public, redacted copy of the homelab notes from the Obsidian vault
+
+  - name: vlan-flow
+    url: https://github.com/herms14/vlan-flow.git
+    branch: main
+    prefix: vlan
+    description: VLAN Flow - live map of allowed/blocked inter-VLAN traffic from firewall syslog

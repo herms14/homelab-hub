@@ -2,6 +2,15 @@
 
 All notable changes to the homelab-hub workspace. Upstream template changes are in [TEMPLATE_CHANGELOG.md](TEMPLATE_CHANGELOG.md).
 
+## [repos] - 2026-10-19
+
+### Added
+- `roundtable` (public, homelab-only edition of the Roundtable agents), `homelab-docs` (redacted vault notes) and `vlan-flow` in repos.yaml, repos.md, README and docs/architecture.md.
+
+### Changed
+- README: the private `olympus-agents` row replaced by `roundtable`; nine repos; note that `homelab-infrastructure` and `helios-api` are private.
+- docs/architecture.md, docs/rebuild.md: Roundtable paths point to `roundtable/`.
+
 ## [docs-sync] - 2026-10-19
 
 ### Changed

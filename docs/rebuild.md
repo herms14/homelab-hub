@@ -9,7 +9,7 @@ Detailed per-step instructions live in [`repos/homelab-deployment/README.md`](..
 ## Prerequisites
 
 - Hardware: 3 Proxmox nodes, QDevice host, Synology DS920+, Omada gateway/switches/APs
-- Run `/pull-all-repos` in this hub so all six repos are present
+- Run `/pull-all-repos` in this hub so all nine repos are present
 - Secrets from your password manager (never from a repo): Proxmox API tokens, Cloudflare DNS token, Authentik, Arr keys, Discord/GitLab tokens
 
 ## Steps
@@ -23,13 +23,13 @@ Detailed per-step instructions live in [`repos/homelab-deployment/README.md`](..
 | 5 | Templates (Ubuntu cloud-init, Packer Windows) | `homelab-deployment` | `packer/`, `docs/PACKER.md` |
 | 6 | VMs via Terraform | `homelab-deployment` | `terraform/proxmox/` (prune retired K8s/syslog VMs first) |
 | 7 | Ansible bootstrap + Docker | `homelab-deployment` | `docs/ANSIBLE.md`, `ansible/roles/docker/` |
-| 8 | Core: Technitium (homelab-dns01, `olympus-agents/dns/`), Pi-hole, Traefik, Authentik | `homelab-deployment` | `ansible/roles/traefik/`, `ansible/roles/authentik/`, `docs/FORWARD_AUTH_SETUP.md` |
+| 8 | Core: Technitium (homelab-dns01, `roundtable/dns/`), Pi-hole, Traefik, Authentik | `homelab-deployment` | `ansible/roles/traefik/`, `ansible/roles/authentik/`, `docs/FORWARD_AUTH_SETUP.md` |
 | 9 | Apps: media, Immich, GitLab, Paperless, n8n, Home Assistant, etc. | `homelab-deployment` | `ansible/playbooks/`, `docs/SERVICES.md` |
 | 10 | Monitoring: Prometheus, Grafana, Uptime Kuma, exporters | `homelab-infrastructure` | `ansible/playbooks/monitoring/`, `dashboards/` |
 | 11 | Glance + widget APIs | `glance-dashboard` | `README.md#deploy`, `config/.env.example`, `apis/` |
 | 12 | Helios API (CT210) | `helios-api` | `README.md#deployment` (Option A), `deploy/systemd/` |
 | 13 | Codex patch agent (CT211) | not published | `homelab-deployment` README, "Autonomous Patch Management Pipeline" |
-| 13b | OpenBao (CT213), before the Roundtable agents | `olympus-agents` | `openbao/bao_install.sh`, then `bao_setup.py` on CT211 (needs the unseal key from your password manager when restoring) |
+| 13b | OpenBao (CT213), before the Roundtable agents | `roundtable` | `openbao/bao_install.sh`, then `bao_setup.py` on CT211 (needs the unseal key from your password manager when restoring) |
 | 14 | Docs and story | `homelab-infrastructure`, `blog` | Update inventory, then `/inventory-refresh` here |
 
 ## Notes
