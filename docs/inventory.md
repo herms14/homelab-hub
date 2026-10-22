@@ -1,6 +1,6 @@
 # Inventory
 
-Snapshot of the live cluster, taken **2026-10-19** from node01 (`pvesh get /cluster/resources`).
+Snapshot of the live cluster, taken **2026-10-23** from node01 (`pvesh get /cluster/resources`).
 Run `/inventory-refresh` to check for drift.
 
 ## Cluster
@@ -26,8 +26,8 @@ Bare metal outside the cluster: **homelab-dns01** (mini PC, Ubuntu 26.04, 4 core
 |------|------|------|-----|----|------|
 | 103 | ansible-controller01 | node01 | 8 GB | 192.168.20.30 | Ansible / Terraform / Packer controller |
 | 106 | gitlab-vm01 | node03 | 12 GB | 192.168.40.23 | GitLab CE |
-| 107 | docker-vm-core-utilities01 | node01 | 24 GB | 192.168.40.13 | Monitoring, productivity apps, Glance helper APIs |
-| 108 | immich-vm01 | node03 | 16 GB | 192.168.40.22 | Immich photos |
+| 107 | docker-vm-core-utilities01 | node01 | 32 GB | 192.168.40.13 | Monitoring, productivity apps, Glance helper APIs |
+| 108 | immich-vm01 | node03 | 24 GB | 192.168.40.22 | Immich photos |
 | 121 | gitlab-runner-vm01 | node02 | 2 GB | 192.168.40.24 | GitLab CI runner |
 | 1000 | tpl-ubuntuv24.04-v1 | node01 | - | - | Ubuntu 24.04 template |
 | 9022 | WS2022-Template | node03 | - | - | Windows Server 2022 template |
