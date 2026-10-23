@@ -2,6 +2,11 @@
 
 All notable changes to the homelab-hub workspace. Upstream template changes are in [TEMPLATE_CHANGELOG.md](TEMPLATE_CHANGELOG.md).
 
+## [docs-sync] - 2026-10-24
+
+### Changed
+- docs/inventory.md: node, VM and LXC tables refreshed from the live cluster
+
 ## [docs-sync] - 2026-10-23
 
 ### Changed

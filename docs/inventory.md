@@ -1,6 +1,6 @@
 # Inventory
 
-Snapshot of the live cluster, taken **2026-10-23** from node01 (`pvesh get /cluster/resources`).
+Snapshot of the live cluster, taken **2026-10-24** from node01 (`pvesh get /cluster/resources`).
 Run `/inventory-refresh` to check for drift.
 
 ## Cluster
@@ -40,7 +40,7 @@ Bare metal outside the cluster: **homelab-dns01** (mini PC, Ubuntu 26.04, 4 core
 | 100 | pbs-server | node03 | 4 GB | 192.168.20.50 | Proxmox Backup Server |
 | 200 | docker-lxc-glance | node01 | 4 GB | 192.168.40.12 | Glance `:8080`, proxmox-nodes-api `:5061`, pihole-stats-api `:5055` |
 | 201 | docker-lxc-bots | node01 | 2 GB | 192.168.40.17 | Bot host (re-IP'd from .14 on 2026-10-05) |
-| 202 | pihole | node01 | 1 GB | 192.168.90.53 | Pi-hole + Unbound DNS (secondary; local names synced from Technitium) |
+| 202 | pihole | node01 | 2 GB | 192.168.90.53 | Pi-hole + Unbound DNS (secondary; local names synced from Technitium) |
 | 203 | traefik-lxc | node01 | 2 GB | 192.168.40.20 | Traefik reverse proxy |
 | 204 | authentik-lxc | node02 | 4 GB | 192.168.40.21 | Authentik SSO |
 | 205 | docker-lxc-media | node01 | 8 GB | 192.168.40.11 | Jellyfin + Arr stack |
