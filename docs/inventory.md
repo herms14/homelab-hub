@@ -1,6 +1,6 @@
 # Inventory
 
-Snapshot of the live cluster, taken **2026-10-24** from node01 (`pvesh get /cluster/resources`).
+Snapshot of the live cluster, taken **2026-10-30** from node01 (`pvesh get /cluster/resources`).
 Run `/inventory-refresh` to check for drift.
 
 ## Cluster
@@ -20,7 +20,7 @@ Run `/inventory-refresh` to check for drift.
 
 Bare metal outside the cluster: **homelab-dns01** (mini PC, Ubuntu 26.04, 4 cores, 4 GB), 192.168.90.60 static, Technitium DNS `:53` / web `:5380` (https://dns.hrmsmrflrii.xyz), exporters `:9274` (Technitium) and `:9100`.
 
-## Virtual Machines (5 running + 3 templates)
+## Virtual Machines (8 running + 3 templates)
 
 | VMID | Name | Node | RAM | IP | Role |
 |------|------|------|-----|----|------|
@@ -29,6 +29,9 @@ Bare metal outside the cluster: **homelab-dns01** (mini PC, Ubuntu 26.04, 4 core
 | 107 | docker-vm-core-utilities01 | node01 | 32 GB | 192.168.40.13 | Monitoring, productivity apps, Glance helper APIs |
 | 108 | immich-vm01 | node03 | 24 GB | 192.168.40.22 | Immich photos |
 | 121 | gitlab-runner-vm01 | node02 | 2 GB | 192.168.40.24 | GitLab CI runner |
+| 140 | k8s-cp01 | node02 | 4 GB | 192.168.20.37 | k8s-lab |
+| 141 | k8s-w01 | node01 | 8 GB | 192.168.20.38 | k8s-lab |
+| 142 | k8s-w02 | node03 | 8 GB | 192.168.20.39 | k8s-lab |
 | 1000 | tpl-ubuntuv24.04-v1 | node01 | - | - | Ubuntu 24.04 template |
 | 9022 | WS2022-Template | node03 | - | - | Windows Server 2022 template |
 | 9025 | WS2025-Template | node03 | - | - | Windows Server 2025 template |

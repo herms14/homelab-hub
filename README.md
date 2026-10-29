@@ -31,7 +31,7 @@ Details per repo: [repos/repos.md](repos/repos.md).
 | | |
 |---|---|
 | **Hypervisor** | Proxmox VE 9.2, 3 nodes + QDevice (64 threads, ~120 GB RAM) |
-| **Guests** | 5 VMs + 3 templates, 15 LXCs |
+| **Guests** | 8 VMs + 3 templates, 15 LXCs |
 | **Network** | TP-Link Omada SDN, 8 VLANs |
 | **Edge** | Traefik + Let's Encrypt, Authentik SSO, Technitium DNS (primary) + Pi-hole (secondary) |
 | **Secrets** | OpenBao (openbao-lxc), per-agent scoped tokens for the Roundtable, kept by the Varys agent |
